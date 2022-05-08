@@ -2,7 +2,7 @@
 FROM node:10
 COPY ./ /app
 WORKDIR /app
-RUN npm install && npm run build
+RUN npm install && npm run build:prod
 
 FROM nginx
 RUN mkdir /app
