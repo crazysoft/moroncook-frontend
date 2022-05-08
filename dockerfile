@@ -1,7 +1,7 @@
 FROM node:10
 COPY ./ /vue-docker
 WORKDIR /vue-docker
-RUN npm install && npm run build
+RUN npm install && npm run build:prod
 
 FROM nginx
 RUN mkdir /vue-docker
