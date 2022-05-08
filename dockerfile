@@ -1,4 +1,4 @@
-# test
+# test2
 FROM node:10
 COPY ./ /app
 WORKDIR /app
