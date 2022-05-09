@@ -1,15 +1,9 @@
-FROM node:12
+FROM node:10
+COPY ./ /vue-docker
+WORKDIR /vue-docker
+RUN npm install && npm run build:prod
 
-# Create app directory
-WORKDIR /app
-
-COPY . .
-
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
-
-# Bundle app source
-
-
-EXPOSE 8080
+FROM nginx
+RUN mkdir /vue-docker
+COPY --from=0 /vue-docker/dist /vue-docker
+COPY nginx.conf /etc/nginx/nginx.conf
